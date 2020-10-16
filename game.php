@@ -1,0 +1,253 @@
+<?php 
+    $nomeClinica = 'Exsicatas a serviço do Cerrado';
+    $inicio="";
+    $game="active";
+    $referencia="";
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+		<?php
+			include 'head.php'
+		?>
+    </head>
+    <body id="about" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tituloModal"></h4>
+                    </div>
+                    <div class="modal-body" id="textoModal">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="jumbotron">	
+        <?php
+			include 'navegacao.php';
+			include 'cabecalho.php';
+		?>
+			<div class="interna" style="background-color: #F5FFFA;" align="justify">
+                <div class="jumbotron">	
+                    <div class="container-fluid" style="background-color: #F8F8FF; color: black">
+                        <div class="row">
+		        			<div class="col-sm-10">
+                                <div id="titulo" class="center"></div>
+                                <div id="questao"></div>        
+                                <br>
+                                <div id="listaImagens">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+        </div>
+				
+        <?php
+			include 'rodape.php'
+		?>
+    </body>
+    <script>
+        const questoes = [
+            "Bom, primeiramente o que você faria, ou qual lugar iria sendo um botânico que quer montar uma exsicata?",
+            "Agora que você está aqui, o que fazemos?",
+            "Qual o melhor modo de guardar as plantas para retirar a umidade?",
+            "O que você também tem que fazer durante o campo?",
+            "Precisamos reduzir o volume desse material o que fazemos?",
+            "Estamos indo para uma fase muito importante, na qual toda a umidade restante é retirada, o que usamos para isso?",
+            "Ufa, você está quase terminado o seu trabalho, depois de retirada da estufa o que acontece agora?",
+            "Chegamos ao ponto final da nossa aventura, como é a aparência do seu trabalho?"
+        ]
+
+        const imagens = [{nome: "campo.jpg", etapa: 1, correta: true, descricao: " Ir a campo"},
+ {nome: "cidade.jpg", etapa: 1, correta: false, descricao: " Ir a cidade"},
+ {nome: "praia.jpg", etapa: 1, correta: false, descricao: "Ir a praia"},
+ {nome: "coleta.jpg", etapa: 1, correta: false, descricao: "Coletar um ramo"},
+ // etapa 2
+ {nome: "coleta.jpg", etapa: 2, correta: true, descricao: "Coletar um ramo"},
+ {nome: "coleta1.jpg", etapa: 2, correta: true, descricao: "Coletar um ramo"},
+ {nome: "coletalixo.jpg", etapa: 2, correta: false, descricao: "Coletar o lixo"},
+ {nome: "campo.jpg", etapa: 2, correta: false, descricao: "Ir a campo"},
+ // etapa 3
+ {nome: "cartolina.jpg", etapa: 3, correta: false, descricao: "Usar cartolina"},
+ {nome: "jornal.jpeg", etapa: 3, correta: true, descricao: "Usar jornal"},
+ {nome: "etiquetaroupa.jpg", etapa: 3, correta: false, descricao: "Etiqueda de roupa"},
+ {nome: "estufa.jpg", etapa: 3, correta: false, descricao: "Usar a estufa"},
+ // etapa 4
+ {nome: "etiquetaj.jpeg", etapa: 4, correta: true, descricao: "Anotação de campo"},
+ {nome: "etiquetaroupa.jpg", etapa: 4, correta: false, descricao: "Etiqueta de roupa"},
+ {nome: "etiquetatarja.jpg", etapa: 4, correta: false, descricao: "Etiqueta de folha"},
+ {nome: "exsicata1.jpg", etapa: 4, correta: false, descricao: "Exsicata"},
+ // etapa 5
+ {nome: "maquinaprensagem.jpg", etapa: 5, correta: false, descricao: "Usar uma máquina"},
+ {nome: "prensagem.jpg", etapa: 5, correta: true, descricao: "Prensar o jornal"},
+ {nome: "etiquetatarja.jpg", etapa: 5, correta: false, descricao: "Etiqueta de folha"},
+ {nome: "fornolenha.jpg", etapa: 5, correta: false, descricao: "Colocar no forno"},
+ // etapa 6
+ {nome: "estufa.jpg", etapa: 6, correta: true, descricao: "Usar a estufa"},
+ {nome: "estufaplanta.jpg", etapa: 6, correta: false, descricao: "Colocar na estufa de plantas"},
+ {nome: "fornoeletrico.jpg", etapa: 6, correta: false, descricao: "Usar o forno elétrico"},
+ {nome: "fornolenha.jpg", etapa: 6, correta: false, descricao: "Colocar no forno"},
+ // etapa 7
+ {nome: "colar.jpg", etapa: 7, correta: true, descricao: "Colar o ramo"},
+ {nome: "campo.jpg", etapa: 7, correta: false, descricao: "Ir a campo"},
+ {nome: "etiquetaj.jpeg", etapa: 7, correta: false, descricao: "Anotação de campo"},
+ {nome: "exsicata1.jpg", etapa: 7, correta: false, descricao: "Exsicata"},
+ // etapa 8
+ {nome: "exsicata.jpg", etapa: 8, correta: true, descricao: "Exsicata"},
+ {nome: "exsicata1.jpg", etapa: 8, correta: true, descricao: "Exsicata"},
+ {nome: "coleta1.jpg", etapa: 8, correta: false, descricao: "Coletar um ramo"},
+ {nome: "jornal.jpeg", etapa: 8, correta: false, descricao: "Usar jornal"}
+];
+
+        let etapa = 0;
+
+        window.onload = () => {
+            const listaImagens = document.querySelector('#listaImagens');
+
+            PreecheEtapa();
+            PreecheImagens();
+        }
+
+        function AbrirModal(tituloModal, textoModal){
+            var titulo = document.querySelector('#tituloModal');
+            var texto = document.querySelector('#textoModal');
+
+            titulo.innerHTML = '';
+            titulo.innerHTML = tituloModal;
+
+            texto.innerHTML = '';
+            texto.innerHTML = '<p>' + textoModal + '</p>';
+
+            $("#myModal").modal();
+        }
+
+        function iniciaGame(){
+            etapa = 1;
+            PreecheEtapa();
+            PreecheImagens();
+        }
+
+        function PreecheEtapa(){
+            if(etapa == 0){
+                document.querySelector('#titulo').innerHTML = '<h2>Bem vindo ao jogo Botânico Por Um Dia!</h2>';
+                document.querySelector('#questao').innerHTML = `
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Agora convido a você ser botânico por 1 dia. Vamos montar uma exsicata?</h4>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <center><button type="button" class="btn btn-info btn-lg" style="background-color: #008CBA;" onclick="iniciaGame()">Iniciar</button></center>
+                                        </div>
+                                    </div>
+                                </div>
+                `;
+            }
+            else if(etapa < 9){
+                document.querySelector('#titulo').innerHTML = '<h2>Etapa ' + etapa + '</h2>';
+                document.querySelector('#questao').innerHTML = '<h4>' + questoes[etapa-1] + '</h4>';
+            }
+            else{
+                document.querySelector('#titulo').innerHTML = `
+                <div class="container-fluid" style="background-color: #F8F8FF;">
+                    <div class="row">
+						<div class="col-sm-12">
+                            <h1>Parabens!</h1>
+                            <br>
+                            <h3> Você montou uma exsicata!</h3>
+                        </div>
+                    </div>
+                </div>`;
+                document.querySelector('#questao').innerHTML = '';
+            }
+        }
+
+        function PreencheImagensLista(element){
+            return `<div class="col-sm-3">
+                        <img id="${element.nome}" src="images\\jogo\\${element.nome}" alt="Campo Rupestre" width="100%" height="100%" onclick="Selecione('${element.nome}')">
+                        <br>
+                        ${element.descricao}
+                    </div>` ;
+        }
+
+        function EstaNaEtapa(element){
+            return element.etapa == etapa;
+        }
+
+        function shuffle(array) {
+            var m = array.length, t, i;
+
+            // While there remain elements to shuffle…
+            while (m) {
+          
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+
+                // And swap it with the current element.
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
+
+            return array;
+        }
+
+        function PreecheImagens(){
+            let texto = '';
+            listaImagens.innerHTML = '';
+            texto += `<div class="container-fluid">
+                                            <div class="row">`;
+            var imagens2 = shuffle(imagens.filter(EstaNaEtapa));
+
+            for (i = 0; i< imagens2.length; i++){
+                console.log(imagens2[i].nome);
+                texto += PreencheImagensLista(imagens2[i]);
+            }
+
+            listaImagens.innerHTML += texto;
+            listaImagens.innerHTML += `      </div>
+                                      </div>`;
+        }
+
+        function Encontra(nome){
+            return 
+        }
+
+        function Selecione(nome){
+            var img;
+            for (i = 0; i< imagens.length; i++){
+                if(nome == imagens[i].nome && imagens[i].etapa == etapa){
+                    img = imagens[i];
+                    break;
+                }
+            }    
+
+            if(img != null)
+            {
+                if(img.correta){
+                    AbrirModal('Correta!', 'Imagem correta para a etapa ' + etapa);
+
+                    etapa++;
+                    PreecheEtapa();
+                    PreecheImagens();
+                }
+                else{
+                    AbrirModal('Incorreta!', 'Imagem incorreta para a etapa ' + etapa);
+                }
+            }
+        }
+
+    </script>
+</html>
+
