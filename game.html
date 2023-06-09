@@ -7,9 +7,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-		<?php
-			include 'head.php'
-		?>
+        <script type="text/javascript" src="javascript/jquery.js"></script>
+		 <title>Exsicatas a serviço do Cerrado</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="javascript/scriptpagina.js"></script>
+		<script type="text/javascript" src="javascript/jquery.maskedinput.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
     </head>
     <body id="about" data-spy="scroll" data-target=".navbar" data-offset="60">
         <div class="modal fade" id="myModal" role="dialog">
@@ -28,10 +38,28 @@
             </div>
         </div>
 		<div class="jumbotron">	
-        <?php
-			include 'navegacao.php';
-			include 'cabecalho.php';
-		?>
+            <nav class="navbar navbar-default navbar-fixed-top">
+        	    <div class="container">
+        	        <div class="navbar-header">
+        	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        	                <span class="icon-bar"></span>
+        	                <span class="icon-bar"></span>
+        	                <span class="icon-bar"></span>                        
+        	            </button>
+						<a class="navbar-brand" href="index.html">Exsicatas a serviço do Cerrado</a>
+        	        </div>
+        	        <div class="collapse navbar-collapse" id="myNavbar">
+        	            <ul class="nav navbar-nav navbar-right">
+								<li class = ""><a href="index.html"><span class="glyphicon glyphicon-home"></span>INÍCIO</a></li>
+								<li class = ""><a href="game.html"><span class="glyphicon glyphicon-cloud"></span>JOGO</a></li>
+						</ul>
+        	        </div>
+        	    </div>
+        	</nav>
+			<div class="jumbotron text-center">
+            	<h1>Exsicatas a serviço do Cerrado</h1> 
+            	<p>Ação educativa museau</p>
+        	</div>
 			<div class="interna" style="background-color: #F5FFFA;" align="justify">
                 <div class="jumbotron">	
                     <div class="container-fluid" style="background-color: #F8F8FF; color: black">
@@ -53,9 +81,11 @@
 			</div>
         </div>
 				
-        <?php
-			include 'rodape.php'
-		?>
+        <center>
+			<footer  class="bg-grey">
+        		Exsicatas a serviço do Cerrado
+        	</footer>
+		</center>
     </body>
     <script>
         const questoes = [
